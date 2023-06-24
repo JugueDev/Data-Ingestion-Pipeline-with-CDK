@@ -31,4 +31,13 @@ Posteriormente este archivo csv pasará por un pipeline de datos compuesto por t
 
 Estas capas van a estar coordinadas por un Step Function el cual además se encargará de notificar en caso exista un error. Este Step Function se disparará gracias a una regla de Eventbridge que se activa al momento de cargar un archivo en el bucket de S3 de datos.
 
+![Diagrama del Flujo del Pipeline de datos](https://github.com/JugueDev/Data-Ingestion-Pipeline-with-CDK/blob/main/images/diagrama_pipeline_flujo.jpg?raw=true)
+
+
+En la capa de validación pasará por un job (AWS Glue) que se encargará de ejecutar las siguientes validaciones:
+- Validación de la integridad y del tipo de archivo.
+- Validación de las reglas de diccionario.
+
+Finalmente una vez validado el archivo se escribirá en una base de datos RDS.
+
 
