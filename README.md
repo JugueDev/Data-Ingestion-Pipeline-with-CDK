@@ -43,3 +43,24 @@ En la capa de validación pasará por un job (AWS Glue) que se encargará de eje
 Finalmente una vez validado el archivo se escribirá en una base de datos RDS.
 
 
+Para las funcionalidades de backup y restore se registro 2 recursos adicionales a la API siguiendo el siguiente esquema:
+
+![Diagrama del flujo de llamada a la API para las funcionalidades de restore y backup](https://github.com/JugueDev/Data-Ingestion-Pipeline-with-CDK/blob/main/images/diagrama_restore_backup.jpg?raw=true)
+
+```
+# Para el backup COMPLETO de las tablas
+curl -i  -H "x-api-key: {api-key}" -X GET 'https://{api_id}.execute-api.{region}.amazonaws.com/prod/backup/' 
+
+# Para el restore de UNA de las tablas
+curl -i  -H "x-api-key: {api-key}" -X GET 'https://{api_id}.execute-api.{region}.amazonaws.com/prod/restore/{table}/' 
+
+```
+
+
+### Dashboard Bonus
+
+Adicionalmente se puede diseñar un dashboard en quicksight para el consumo de la data y posterior visualización:
+
+![Diagrama de consumo de los datos](https://github.com/JugueDev/Data-Ingestion-Pipeline-with-CDK/blob/main/images/diagrama_consumo_datos.jpg?raw=true)
+
+![Dashboard en Quicksight](https://github.com/JugueDev/Data-Ingestion-Pipeline-with-CDK/blob/main/images/quicksight_dashboard.jpg?raw=true)

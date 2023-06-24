@@ -59,7 +59,7 @@ connection_s = {
     "customJdbcDriverS3Path": "s3://assets-bucket-for-test-jg/assets/mysql-connector-java-8.0.28.jar",
     "customJdbcDriverClassName": "com.mysql.cj.jdbc.Driver"}
 
-tables_list = ["jobs","hired_employees","departments"]
+tables_list = []
 print(f"Limpiando el contenido de la carpeta.")
 s3 = boto3.resource('s3')
 bucket = s3.Bucket('ingestion-bucket-data-test-jg')

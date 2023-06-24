@@ -51,37 +51,13 @@ path_input = "s3://ingestion-bucket-data-test-jg/ingestion/" + file + ".csv"
 if key_value[-3:] != "csv":
     raise ValueError('El archivo no tiene formato csv.')
 
-tables_list = ["jobs","hired_employees","departments"]
+tables_list = [""]
 
 if file not in tables_list:
     raise ValueError('El archivo no pertenece a una  tabla o no tiene el formato establecido.')
 
 
-if file == "jobs":
-    
-    df = spark.read\
-        .format("csv")\
-        .option("header", "false")\
-        .option("delimiter",";")\
-        .load(path_input)
-    
-    df = df.toDF(*("job_id", "job_name"))
-    
-    only_numeric(df, "job_id")
-    
-    df = df.withColumn('job_id', col('job_id').cast('integer'))
-
-elif file == "departments":
-    print("To Do: validaciones")
-    df = spark.read\
-        .format("csv")\
-        .option("header", "false")\
-        .option("delimiter",";")\
-        .load(path_input)
-    df = df.toDF(*("department_id", "department_name"))
-    only_numeric(df, "department_id")
-
-elif file == "hired_employees":
+if file == "nombre de alguna tabla":
     print("To Do: validaciones")
     df = spark.read\
         .format("csv")\
