@@ -3,6 +3,7 @@ import { IngestStack } from './ingestion-stack';
 import { Construct } from 'constructs';
 import { BootstrapStack } from './bootstrap-stack';
 import { DatabaseStack } from './database-stack';
+import { DataPipelineStack } from './data-pipeline-stack';
 
 export class CdkcodeStack extends Stack {
 
@@ -23,6 +24,12 @@ export class CdkcodeStack extends Stack {
       publicSN2: bootstrapStack.publicSubnet2,
     });
     
+    
+    const dataPipelineStack = new DataPipelineStack(this, 'dataPipelineStack', {
+      assetsBucket: bootstrapStack.assetsBucket, 
+      dataBucket: IngestionStack.dataBucket,
+      dbInstance: databaseStack.dbInstance,
+    });
 
   }
 }
