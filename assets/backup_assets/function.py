@@ -19,7 +19,7 @@ def handler(event, context):
     else:
         table = ""
         body = "Backup process iniciated."
-    tables_list = ["jobs","hired_employees","departments", ""]
+    tables_list = []
 
     if table in tables_list:
         # Job a ejecutar: 
