@@ -4,6 +4,7 @@ import { Construct } from 'constructs';
 import { BootstrapStack } from './bootstrap-stack';
 import { DatabaseStack } from './database-stack';
 import { DataPipelineStack } from './data-pipeline-stack';
+import { BackupStack } from './backup-stack';
 
 export class CdkcodeStack extends Stack {
 
@@ -29,6 +30,13 @@ export class CdkcodeStack extends Stack {
       assetsBucket: bootstrapStack.assetsBucket, 
       dataBucket: IngestionStack.dataBucket,
       dbInstance: databaseStack.dbInstance,
+    });
+
+    const backupStack = new BackupStack(this, 'backupStack', {
+      assetsBucket: bootstrapStack.assetsBucket,
+      executeGlueJobsRole: dataPipelineStack.executeGlueJobsRole,
+      dbInstance: databaseStack.dbInstance,
+      apiGateway: IngestionStack.apiGateway,
     });
 
   }

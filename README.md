@@ -7,6 +7,8 @@ Para poder levantar la infraestructura, después de descargar el repositorio eje
 ```
 npm install
 npm i constructs
+npm i --save-dev @types/node
+
 ```
 
 
