@@ -23,6 +23,6 @@
     "@aws-cdk/assets": "^1.201.0",
     "@aws-cdk/region-info": "^2.80.0",
     "aws-cdk-lib": "2.78.0",
-    "constructs": "^10.2.29"
+    "constructs": "^10.2.58"
   }
 }
